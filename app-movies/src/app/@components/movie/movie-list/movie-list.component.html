@@ -1,0 +1,91 @@
+<ion-menu contentId="main-content">
+  <ion-header>
+    <ion-toolbar>
+      <ion-title>Fictional Cinemax</ion-title>
+    </ion-toolbar>
+  </ion-header>
+  <ion-content class="ion-padding">
+    <ion-list>
+      <ion-item (click)="navigateTo('users')">
+        <ion-icon name="people"></ion-icon>
+        <ion-label>Users</ion-label>
+      </ion-item>
+      <ion-item (click)="navigateTo('customer')">
+        <ion-icon name="person"></ion-icon>
+        <ion-label>Customer</ion-label>
+      </ion-item>
+      <ion-item (click)="logout()">
+        <ion-icon name="log-out"></ion-icon>
+        <ion-label>Log out</ion-label>
+      </ion-item>
+    </ion-list>
+    
+  </ion-content>
+</ion-menu>
+
+<div id="main-content">
+  <ion-header>
+    <ion-toolbar>
+      <ion-buttons slot="start">
+        <ion-menu-button></ion-menu-button>
+      </ion-buttons>
+      <ion-title>Movies</ion-title>
+      <ion-buttons slot="end">
+        <ion-button (click)="toggleSearch()">
+          <ion-icon slot="icon-only" name="search"></ion-icon>
+        </ion-button>
+      </ion-buttons>
+    </ion-toolbar>
+  </ion-header>
+</div>
+
+<ion-searchbar
+  *ngIf="showSearchBar"
+  [(ngModel)]="searchText"
+  (ionInput)="onSearchInput($event)"
+  (ionCancel)="onSearchCancel()"
+></ion-searchbar>
+
+<ion-content>
+  <!-- lista por defecto -->
+  <ion-list *ngIf="!showSearchBar">
+    <ion-item-sliding *ngFor="let movie of movies">
+      <ion-item (ionSwipe)="openMovieDetail(movie.id)">
+        <ion-thumbnail slot="start">
+          <img [src]="movie.imagePath" alt="{{ movie.title }} Image" /> <!-- Agrega la imagen -->
+        </ion-thumbnail>
+        <ion-label>
+          <h2>{{ movie.title }}</h2>
+          <p>Año: {{ movie.year }}</p>
+          <p>Calificación: {{ movie.rate }}</p>
+          <!-- Puedes agregar más detalles de la película aquí si lo deseas -->
+        </ion-label>
+      </ion-item>
+      <ion-item-options side="end">
+        <!-- Agrega opciones para editar o eliminar la película aquí -->
+        <ion-item-option (click)="editMovie(movie.id)">Editar</ion-item-option>
+      </ion-item-options>
+    </ion-item-sliding>
+  </ion-list>
+  <!-- lista de busqueda -->
+  <ion-list *ngIf="showSearchBar">
+    <ion-item-sliding *ngFor="let movie of filteredMovies">
+      <ion-item (ionSwipe)="openMovieDetail(movie.id)">
+        <ion-thumbnail slot="start">
+          <img [src]="movie.imagePath" alt="{{ movie.title }} Image" /> <!-- Agrega la imagen -->
+        </ion-thumbnail>
+        <ion-label>
+          <h2>{{ movie.title }}</h2>
+          <p>Año: {{ movie.year }}</p>
+          <p>Calificación: {{ movie.rate }}</p>
+          <!-- Puedes agregar más detalles de la película aquí si lo deseas -->
+        </ion-label>
+      </ion-item>
+      <ion-item-options side="end">
+        <!-- Agrega opciones para editar o eliminar la película aquí -->
+        <ion-item-option (click)="editMovie(movie.id)">Editar</ion-item-option>
+      </ion-item-options>
+    </ion-item-sliding>
+  </ion-list>
+</ion-content>
+
