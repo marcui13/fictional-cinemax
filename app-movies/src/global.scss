@@ -24,3 +24,42 @@
 @import "@ionic/angular/css/text-alignment.css";
 @import "@ionic/angular/css/text-transformation.css";
 @import "@ionic/angular/css/flex-utils.css";
+
+/* Estilo por defecto para las notificaciones */
+.notification {
+    color: white;
+    font-weight: bold;
+  }
+  
+  /* Estilo para notificaciones de éxito */
+  .success {
+    --mdc-snackbar-container-color: #4caf50; /* Verde */
+    --mat-snack-bar-button-color: white;
+    color: white;
+    border-color: #388e3c; /* Color de borde verde más oscuro */
+  }
+  
+  /* Estilo para notificaciones de error */
+  .error {
+    --mdc-snackbar-container-color: #f44336; /* Rojo */
+    --mat-snack-bar-button-color: white;
+    color: white;
+    border-color: #d32f2f; /* Color de borde rojo más oscuro */
+  }
+  
+  /* Estilo para notificaciones de advertencia */
+  .warning {
+    --mdc-snackbar-container-color: #ff9800; /* Naranja */
+    --mat-snack-bar-button-color: white;
+    color: black; /* Texto en color negro para advertencias */
+    border-color: #f57c00; /* Color de borde naranja más oscuro */
+  }
+  
+  /* Estilo para notificaciones de información */
+  .info {
+    --mdc-snackbar-container-color: #2196f3; /* Azul */
+    --mat-snack-bar-button-color: white;
+    color: white;
+    border-color: #1976d2; /* Color de borde azul más oscuro */
+  }
+  
