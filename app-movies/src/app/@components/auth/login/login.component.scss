@@ -1,0 +1,13 @@
+.login-page{
+    .container{
+        height: 100%;
+        display: flex;
+        flex-direction: column;
+        justify-content: space-around;
+        .login-form{
+            display: flex;
+            flex-direction: column;
+        }
+    }
+    
+}

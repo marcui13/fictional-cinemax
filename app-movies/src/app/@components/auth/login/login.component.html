@@ -1,0 +1,54 @@
+<!-- <ion-header>
+  <ion-toolbar>
+    <ion-title>Iniciar Sesión</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <ion-list>
+    <ion-item>
+      <ion-label position="floating">Usuario</ion-label>
+      <ion-input [(ngModel)]="username" type="text" name="username"></ion-input>
+    </ion-item>
+  
+    <ion-item>
+      <ion-label position="floating">Contraseña</ion-label>
+      <ion-input [(ngModel)]="password" type="password" name="password"></ion-input>
+    </ion-item>
+  </ion-list>
+  
+  <ion-button expand="full" (click)="onLogin()">Iniciar Sesión</ion-button>
+  
+  <p class="error-message" *ngIf="error">{{ error }}</p>
+</ion-content> -->
+
+
+<ion-content class="login-page">
+  <div class="container">
+    <!-- logo -->
+    <div></div>
+  
+    <!-- login form -->
+    <div class="login-form">
+      <!-- username input -->
+      <ion-item>
+        <ion-label position="floating">Username</ion-label>
+        <ion-input [(ngModel)]="username" type="text" name="username"></ion-input>
+      </ion-item>
+      <!-- password input -->
+      <ion-item>
+        <ion-label position="floating">Password</ion-label>
+        <ion-input [(ngModel)]="password" type="password" name="password"></ion-input>
+      </ion-item>
+      <!-- login button -->
+      <ion-button (click)="onLogin()">Login</ion-button>
+      <!-- register button -->
+      <ion-text>Create account</ion-text>
+    </div>
+  
+    <!-- forgot password button -->
+    <div>
+      <ion-text>Forgot password?</ion-text>
+    </div>
+  </div>
+</ion-content>
