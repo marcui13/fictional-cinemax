@@ -4,4 +4,5 @@ export interface Movie {
   description: string;
   year: number;
   rate: number;
+  imagePath: string;
 }
