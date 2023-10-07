@@ -36,6 +36,8 @@ export class LoginComponent {
       if (user) {
         // console.log('Usuario encontrado', user);
         this.loginSuccess.emit(user); // Emite un evento de éxito de inicio de sesión
+        this.username = '';
+        this.password = '';
         this.notificationService.showSuccess('Welcome!', 'top');
         this.router.navigateByUrl('/movie-list');
       } else {

@@ -1,13 +1,28 @@
 .login-page{
+    --keyboard-offset:0px !important;
     .container{
+        background-color: #ffbb0e;
         height: 100%;
         display: flex;
         flex-direction: column;
         justify-content: space-around;
         .login-form{
+            height: 300px;
             display: flex;
             flex-direction: column;
+            justify-content: space-between;
+            align-items: center;
+            .login-form-item{
+                width: 200px;
+            }
+            ion-button.login-button{
+                width: 200px;
+                --background:#805117;
+            }
+        }
+        .forgot-password{
+            display: flex;
+            justify-content: center;
         }
     }
-    
 }
