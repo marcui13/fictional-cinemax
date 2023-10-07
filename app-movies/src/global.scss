@@ -62,4 +62,11 @@
     color: white;
     border-color: #1976d2; /* Color de borde azul más oscuro */
   }
+
+.container{
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around;
+}
   
