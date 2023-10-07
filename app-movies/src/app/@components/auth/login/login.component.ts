@@ -48,4 +48,12 @@ export class LoginComponent {
       this.notificationService.showWarning('Complete all fields', 'top');
     }
   }
+
+  register() {
+    this.router.navigateByUrl('/register');
+  }
+
+  forgotPassword() {
+    this.router.navigateByUrl('/forgot-password');
+  }
 }
