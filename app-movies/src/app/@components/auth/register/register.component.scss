@@ -1,17 +1,20 @@
-.container{
-    align-items: center;
-    background-color: #ffbb0e;
-    .register-card{
-        --background: #ffd467;
-        .register-form{
-            height: 650px;
-            .register-item-container{
-                height: 500px;
-                .register-item{
-                    width: 200px;
-                }
-                ion-button.register-button{
-                    --background:#805117;
+.register-page{
+    --keyboard-offset:0px !important;
+    .container{
+        align-items: center;
+        background-color: #ffbb0e;
+        .register-card{
+            --background: #ffd467;
+            .register-form{
+                height: 650px;
+                .register-item-container{
+                    height: 500px;
+                    .register-item{
+                        width: 200px;
+                    }
+                    ion-button.register-button{
+                        --background:#805117;
+                    }
                 }
             }
         }
