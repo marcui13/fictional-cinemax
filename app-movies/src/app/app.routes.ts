@@ -9,6 +9,20 @@ export const routes: Routes = [
       ),
   },
   {
+    path: 'register',
+    loadComponent: () =>
+      import('./@components/auth/register/register.component').then(
+        (m) => m.RegisterComponent
+      ),
+  },
+  {
+    path: 'forgot-password',
+    loadComponent: () =>
+      import(
+        './@components/auth/forgot-password/forgot-password.component'
+      ).then((m) => m.ForgotPasswordComponent),
+  },
+  {
     path: 'movie-list',
     loadComponent: () =>
       import('./@components/movie/movie-list/movie-list.component').then(
