@@ -69,4 +69,16 @@
   flex-direction: column;
   justify-content: space-around;
 }
+
+.register-form, .forgot-form{
+  width: 300px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
   
+.forgot-item-container, .register-item-container{
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}

@@ -1,23 +1,29 @@
 <ion-header>
   <ion-toolbar>
+    <ion-buttons slot="start">
+      <ion-back-button defaultHref="/login"></ion-back-button>
+    </ion-buttons>
     <ion-title>Register</ion-title>
   </ion-toolbar>
 </ion-header>
 
 <ion-content>
-  <form (ngSubmit)="onSubmit()">
-    <ion-item>
-      <ion-label position="floating">Username</ion-label>
-      <ion-input type="text" [(ngModel)]="username" name="username" required></ion-input>
-    </ion-item>
-    <ion-item>
-      <ion-label position="floating">Email</ion-label>
-      <ion-input type="email" [(ngModel)]="email" name="email" required></ion-input>
-    </ion-item>
-    <ion-item>
-      <ion-label position="floating">Password</ion-label>
-      <ion-input type="password" [(ngModel)]="password" name="password" required></ion-input>
-    </ion-item>
-    <ion-button expand="full" type="submit">Register</ion-button>
-  </form>
+  <div class="container">
+    <ion-card class="register-card">
+      <form class="register-form" (ngSubmit)="onSubmit()">
+        <div  class="register-item-container">
+          <ion-item class="register-item">
+            <ion-input type="text" [(ngModel)]="username" name="username" required  label="Username" labelPlacement="floating" placeholder="Username"></ion-input>
+          </ion-item>
+          <ion-item class="register-item">
+            <ion-input type="email" [(ngModel)]="email" name="email" required  label="Email" labelPlacement="floating" placeholder="Email"></ion-input>
+          </ion-item>
+          <ion-item class="register-item">
+            <ion-input type="password" [(ngModel)]="password" name="password" required  label="Password" labelPlacement="floating" placeholder="Password"></ion-input>
+          </ion-item>
+          <ion-button class="register-button" expand="full" type="submit">Register</ion-button>
+        </div>
+      </form>
+    </ion-card>
+  </div>
 </ion-content>
