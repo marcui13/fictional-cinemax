@@ -3,6 +3,8 @@ import { Component, OnInit } from '@angular/core';
 import { FormsModule } from '@angular/forms';
 import { MatSnackBar } from '@angular/material/snack-bar';
 import { IonicModule } from '@ionic/angular';
+import { User } from 'src/app/@models/user.model';
+import { ApiService } from 'src/app/@services/api.service';
 import { NotificationService } from 'src/app/@services/notification.service';
 
 @Component({
@@ -15,13 +17,43 @@ import { NotificationService } from 'src/app/@services/notification.service';
 })
 export class ForgotPasswordComponent implements OnInit {
   email: string = '';
+  newPassword: string = '';
 
-  constructor() {}
+  constructor(
+    private apiService: ApiService,
+    private notificationService: NotificationService
+  ) {}
 
   ngOnInit() {}
 
   onSubmit() {
-    // Lógica para enviar solicitud de restablecimiento de contraseña
-    // Puedes implementar llamadas a servicios o API aquí
+    // Verifica si el correo electrónico está vacío
+    if (!this.email) {
+      // Puedes mostrar una notificación aquí si el campo de correo electrónico está vacío
+      return;
+    }
+    // Obtén la lista de usuarios desde el servicio
+    const users: User[] = this.apiService.getUsers();
+    // Busca un usuario con el correo electrónico proporcionado
+    const userToUpdate: User | undefined = users.find(
+      (user) => user.email === this.email
+    );
+    if (userToUpdate) {
+      // Actualiza la contraseña del usuario encontrado
+      userToUpdate.password = this.newPassword;
+      // Resetea campos
+      this.email = '';
+      this.newPassword = '';
+      // Guarda la actualización en el servicio
+      this.apiService.updateUser(userToUpdate);
+      // Puedes mostrar una notificación de éxito aquí
+      this.notificationService.showSuccess(
+        'Contraseña actualizada con éxito.',
+        'bottom'
+      );
+    } else {
+      // Si no se encuentra un usuario con el correo electrónico, puedes mostrar una notificación de error
+      this.notificationService.showError('Usuario no encontrado.', 'bottom');
+    }
   }
 }
