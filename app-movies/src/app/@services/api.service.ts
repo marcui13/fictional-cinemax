@@ -17,6 +17,7 @@ export class ApiService {
   private loadInitialData() {
     const usersFromLocalStorage = localStorage.getItem('users');
     const moviesFromLocalStorage = localStorage.getItem('movies');
+    const logoPathFromLocalStorage = localStorage.getItem('logoPath');
 
     if (!usersFromLocalStorage) {
       localStorage.setItem('users', JSON.stringify(MOCK_USERS));
@@ -24,6 +25,10 @@ export class ApiService {
 
     if (!moviesFromLocalStorage) {
       localStorage.setItem('movies', JSON.stringify(MOCK_MOVIES));
+    }
+
+    if (!logoPathFromLocalStorage) {
+      localStorage.setItem('logoPath', '../../../../assets/logos/logo1.jpg');
     }
   }
 
