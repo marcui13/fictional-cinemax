@@ -40,7 +40,10 @@ export class LoginComponent {
       this.loginSuccess.emit(user); // Emite un evento de éxito de inicio de sesión
       this.username = '';
       this.password = '';
-      this.notificationService.showSuccess('Welcome!', 'top');
+      this.notificationService.showSuccess(
+        `Welcome ${user.username}!`,
+        'bottom'
+      );
       this.router.navigateByUrl('/movie-list');
     } else {
       this.notificationService.showError('Invalid credentials', 'top');

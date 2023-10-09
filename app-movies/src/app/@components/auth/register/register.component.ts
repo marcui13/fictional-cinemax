@@ -50,7 +50,10 @@ export class RegisterComponent implements OnInit {
       this.apiService.createUser(newUser);
 
       // Notifica al usuario que se ha creado con éxito
-      this.notificationService.showSuccess('User created successfully', 'top');
+      this.notificationService.showSuccess(
+        `User ${newUser.username} created successfully`,
+        'bottom'
+      );
 
       // Restablece los campos del formulario
       this.username = '';
@@ -58,7 +61,7 @@ export class RegisterComponent implements OnInit {
       this.password = '';
     } else {
       // Muestra una advertencia si algún campo está incompleto
-      this.notificationService.showWarning('Complete all fields', 'top');
+      this.notificationService.showError('Complete all fields', 'bottom');
     }
   }
 }

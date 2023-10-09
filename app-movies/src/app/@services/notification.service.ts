@@ -24,22 +24,22 @@ export class NotificationService {
   }
 
   showToast(message: string, duration: number = 20000) {
-    this.showNotification(message, 'toast', 'Close', duration, 'bottom');
+    this.showNotification(message, 'toast', 'X', duration, 'bottom');
   }
 
   showSuccess(message: string, verticalPosition: 'top' | 'bottom') {
-    this.showNotification(message, 'success', 'Close', 3000, verticalPosition);
+    this.showNotification(message, 'success', 'X', 5000, verticalPosition);
   }
 
   showError(message: string, verticalPosition: 'top' | 'bottom') {
-    this.showNotification(message, 'error', 'Close', 5000, verticalPosition);
+    this.showNotification(message, 'error', 'X', 4000, verticalPosition);
   }
 
   showWarning(message: string, verticalPosition: 'top' | 'bottom') {
-    this.showNotification(message, 'warning', 'Close', 5000, verticalPosition);
+    this.showNotification(message, 'warning', 'X', 4000, verticalPosition);
   }
 
   showInfo(message: string, verticalPosition: 'top' | 'bottom' = 'bottom') {
-    this.showNotification(message, 'info', 'Close', 5000, verticalPosition);
+    this.showNotification(message, 'info', 'X', 4000, verticalPosition);
   }
 }
