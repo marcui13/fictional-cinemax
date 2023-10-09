@@ -79,6 +79,16 @@ export class ApiService {
     return [];
   }
 
+  // Método para obtener películas como un observable
+  // getMovies(): Observable<Movie[]> {
+  //   const moviesFromLocalStorage = localStorage.getItem('movies');
+  //   if (moviesFromLocalStorage) {
+  //     const movies = JSON.parse(moviesFromLocalStorage).movies;
+  //     return of(movies);
+  //   }
+  //   return of([]);
+  // }
+
   createMovie(newMovie: Movie) {
     const moviesFromLocalStorage = localStorage.getItem('movies');
     if (moviesFromLocalStorage) {
