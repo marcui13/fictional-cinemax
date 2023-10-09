@@ -16,8 +16,8 @@ import { NotificationService } from 'src/app/@services/notification.service';
   styleUrls: ['./forgot-password.component.scss'],
 })
 export class ForgotPasswordComponent implements OnInit {
-  email: string = '';
-  newPassword: string = '';
+  email!: string;
+  newPassword!: string;
 
   constructor(
     private apiService: ApiService,
@@ -27,33 +27,32 @@ export class ForgotPasswordComponent implements OnInit {
   ngOnInit() {}
 
   onSubmit() {
-    // Verifica si el correo electrónico está vacío
-    if (!this.email) {
-      // Puedes mostrar una notificación aquí si el campo de correo electrónico está vacío
-      return;
-    }
     // Obtén la lista de usuarios desde el servicio
     const users: User[] = this.apiService.getUsers();
     // Busca un usuario con el correo electrónico proporcionado
     const userToUpdate: User | undefined = users.find(
       (user) => user.email === this.email
     );
-    if (userToUpdate) {
-      // Actualiza la contraseña del usuario encontrado
-      userToUpdate.password = this.newPassword;
-      // Resetea campos
-      this.email = '';
-      this.newPassword = '';
-      // Guarda la actualización en el servicio
-      this.apiService.updateUser(userToUpdate);
-      // Puedes mostrar una notificación de éxito aquí
-      this.notificationService.showSuccess(
-        'Contraseña actualizada con éxito.',
-        'bottom'
-      );
+    if (this.email && this.newPassword) {
+      if (userToUpdate) {
+        // Actualiza la contraseña del usuario encontrado
+        userToUpdate.password = this.newPassword;
+        // Resetea campos
+        this.email = '';
+        this.newPassword = '';
+        // Guarda la actualización en el servicio
+        this.apiService.updateUser(userToUpdate);
+        // Puedes mostrar una notificación de éxito aquí
+        this.notificationService.showSuccess(
+          'Contraseña actualizada con éxito.',
+          'bottom'
+        );
+      } else {
+        // Si no se encuentra un usuario con el correo electrónico, puedes mostrar una notificación de error
+        this.notificationService.showError('User not found', 'bottom');
+      }
     } else {
-      // Si no se encuentra un usuario con el correo electrónico, puedes mostrar una notificación de error
-      this.notificationService.showError('Usuario no encontrado.', 'bottom');
+      this.notificationService.showError('Complete all fileds', 'bottom');
     }
   }
 }
