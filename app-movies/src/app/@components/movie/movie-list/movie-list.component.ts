@@ -67,4 +67,21 @@ export class MovieListComponent implements OnInit {
     // Por ejemplo, puedes eliminar el token de autenticación y redirigir a la página de inicio de sesión
     this.router.navigateByUrl('/login');
   }
+
+  createRating(rating: number) {
+    const totalStars = 5;
+    const starIcon = '★';
+    const emptyIcon = '☆';
+
+    // Redondea la puntuación al entero más cercano
+    const roundedRating = Math.round(rating);
+
+    // Asegúrate de que la puntuación esté dentro del rango válido (0 a totalStars)
+    const clampedRating = Math.max(0, Math.min(totalStars, roundedRating));
+
+    const stars = starIcon.repeat(clampedRating);
+    const empty = emptyIcon.repeat(totalStars - clampedRating);
+
+    return stars + empty;
+  }
 }
