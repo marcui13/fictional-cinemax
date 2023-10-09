@@ -1,9 +1,5 @@
 # Movie App
 
-![Movie App Screenshot](/app-movies/src/assets/screen-app2.PNG)
-![Movie App Screenshot](/app-movies/src/assets/screen-app.PNG)
-![Movie App Screenshot](/app-movies/src/assets/screen-app3.PNG)
-
 La Movie App es una aplicación móvil desarrollada con Ionic 7 y Angular que permite a los usuarios realizar las siguientes acciones:
 
 - Iniciar sesión y registrarse como nuevos usuarios.
