@@ -56,8 +56,15 @@
         </ion-thumbnail>
         <ion-label>
           <h2>{{ movie.title }}</h2>
-          <p>Year: {{ movie.year }}</p>
-          <p>Rate: {{ createRating(movie.rate) }}</p>
+          <h4>Year: {{ movie.year }}</h4>
+          <!-- <p>Rate: {{ createRating(movie.rate) }}</p> -->
+          <div class="rating-stars">
+            <h4>Rate:  </h4>
+            <ion-icon
+              *ngFor="let star of [1, 2, 3, 4, 5]"
+              [name]="star <= movie.rate ? 'star' : 'star-outline'"
+            ></ion-icon>
+          </div>
           <!-- Puedes agregar más detalles de la película aquí si lo deseas -->
         </ion-label>
       </ion-item>
@@ -76,12 +83,19 @@
         </ion-thumbnail>
         <ion-label>
           <h2>{{ movie.title }}</h2>
-          <p>Year: {{ movie.year }}</p>
-          <p>Rate: {{ createRating(movie.rate) }}</p>
+          <h4>Year: {{ movie.year }}</h4>
+          <!-- <p>Rate: {{ createRating(movie.rate) }}</p> -->
+          <div class="rating-stars">
+            <h4>Rate:  </h4>
+            <ion-icon
+              *ngFor="let star of [1, 2, 3, 4, 5]"
+              [name]="star <= movie.rate ? 'star' : 'star-outline'"
+            ></ion-icon>
+          </div>
           <!-- Puedes agregar más detalles de la película aquí si lo deseas -->
         </ion-label>
       </ion-item>
-      <ion-item-options side="end">
+      <ion-item-options side="end" *ngIf="!closeItemOption">
         <!-- Agrega opciones para editar o eliminar la película aquí -->
         <ion-item-option (click)="editMovie(movie.id)">Edit</ion-item-option>
       </ion-item-options>
