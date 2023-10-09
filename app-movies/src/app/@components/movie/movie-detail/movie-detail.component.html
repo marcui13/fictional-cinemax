@@ -3,9 +3,9 @@
     <ion-buttons slot="start">
       <ion-back-button defaultHref="/movie-list"></ion-back-button>
     </ion-buttons>
-    <ion-title>Detalles de la Película</ion-title>
+    <ion-title>{{ movie.title }}</ion-title>
     <ion-buttons slot="end">
-      <ion-button (click)="editMovie()">
+      <ion-button (click)="openEditDescriptionModal()">
         <ion-icon slot="icon-only" name="create"></ion-icon> <!-- Ícono de lápiz para editar -->
       </ion-button>
       <ion-button (click)="deleteMovie()">
@@ -17,14 +17,18 @@
 
 <ion-content>
   <ion-card *ngIf="loadedData">
-    <ion-card-header>
-      <ion-card-title>{{ movie.title }}</ion-card-title>
-    </ion-card-header>
     <ion-card-content>
       <ion-img [src]="movie.imagePath" alt="{{ movie.title }} Image"></ion-img>
-      <p>Año: {{ movie.year }}</p>
-      <p>Calificación: {{ movie.rate }}</p>
-      <p>Descripción: {{ movie.description }}</p>
+      <p>Year: {{ movie.year }}</p>
+      <p>Description: {{ movie.description }}</p>
+      <p>Rate: {{ movie.rate }}</p>
+      <div class="rating-stars">
+        <ion-icon
+          *ngFor="let star of [1, 2, 3, 4, 5]"
+          [name]="star <= userRating ? 'star' : 'star-outline'"
+          (click)="rateMovie(star)"
+        ></ion-icon>
+      </div>
     </ion-card-content>
   </ion-card>
 </ion-content>
