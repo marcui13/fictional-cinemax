@@ -34,6 +34,8 @@ export class MovieListComponent implements OnInit {
   }
 
   ionViewWillEnter() {
+    this.menuController.close(); // Cierra el menú lateral
+
     this.loading = true; // Activar el estado de carga
 
     // Mostrar el spinner mientras se cargan los datos
