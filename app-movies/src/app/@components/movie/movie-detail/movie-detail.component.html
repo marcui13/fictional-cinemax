@@ -16,19 +16,21 @@
 </ion-header>
 
 <ion-content>
-  <ion-card *ngIf="loadedData">
-    <ion-card-content>
-      <ion-img [src]="movie.imagePath" alt="{{ movie.title }} Image"></ion-img>
-      <p>Year: {{ movie.year }}</p>
-      <p>Description: {{ movie.description }}</p>
-      <p>Rate: {{ movie.rate }}</p>
-      <div class="rating-stars">
-        <ion-icon
-          *ngFor="let star of [1, 2, 3, 4, 5]"
-          [name]="star <= userRating ? 'star' : 'star-outline'"
-          (click)="rateMovie(star)"
-        ></ion-icon>
-      </div>
-    </ion-card-content>
-  </ion-card>
+  <div class="container">
+    <ion-card *ngIf="loadedData">
+      <ion-card-content>
+        <ion-img [src]="movie.imagePath" alt="{{ movie.title }} Image"></ion-img>
+        <p class="movie-year"><b>Year:</b> {{ movie.year }}</p>
+        <p class="movie-description"><b>Description:</b> {{ movie.description }}</p>
+        <p class="movie-rate"><b>Rate:</b> {{ movie.rate }}</p>
+        <div class="rating-stars">
+          <ion-icon
+            *ngFor="let star of [1, 2, 3, 4, 5]"
+            [name]="star <= userRating ? 'star' : 'star-outline'"
+            (click)="rateMovie(star)"
+          ></ion-icon>
+        </div>
+      </ion-card-content>
+    </ion-card>
+  </div>
 </ion-content>
