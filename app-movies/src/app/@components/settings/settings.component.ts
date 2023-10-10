@@ -18,23 +18,18 @@ export class SettingsComponent {
     '../../../../assets/logos/logo1.jpg',
     '../../../../assets/logos/logo2.jpg',
     '../../../../assets/logos/logo3.jpg',
-    // Agrega más rutas de imágenes de logotipo aquí
   ];
-  selectedLogo: string = ''; // Ruta del logotipo seleccionado
+  selectedLogo: string = '';
 
   constructor(private notificationService: NotificationService) {}
 
   changeLogo(logo: string) {
-    this.selectedLogo = logo; // Cambia el logotipo seleccionado
-    // Almacena la ruta del logotipo seleccionado en el almacenamiento local
+    this.selectedLogo = logo;
     localStorage.setItem('logoPath', this.selectedLogo);
     this.notificationService.showSuccess('Logo changed!', 'bottom');
   }
 
   getLogoName(logo: string) {
-    // Puedes implementar una función para mostrar el nombre del logotipo si lo deseas
-    // Por ejemplo, puedes obtener el nombre del archivo desde la ruta.
-    // Ejemplo: './assets/logos/logo1.png' -> 'logo1'
     const parts = logo.split('/');
     const fileName = parts[parts.length - 1].split('.')[0];
     return fileName;

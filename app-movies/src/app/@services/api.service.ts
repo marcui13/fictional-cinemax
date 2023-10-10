@@ -9,7 +9,6 @@ import { MOCK_USERS } from 'src/mock-data/users.mock';
 })
 export class ApiService {
   constructor() {
-    // Carga los datos iniciales en el localStorage al iniciar el servicio
     this.loadInitialData();
   }
 
@@ -32,7 +31,8 @@ export class ApiService {
     }
   }
 
-  // Métodos para usuarios
+  // --------------- MÉTODOS PARA USUARIOS ----------------
+
   getUsers(): User[] {
     const usersFromLocalStorage = localStorage.getItem('users');
     if (usersFromLocalStorage) {
@@ -75,7 +75,8 @@ export class ApiService {
     }
   }
 
-  // Métodos para películas
+  // --------------- MÉTODOS PARA PELÍCULAS ----------------
+
   getMovies(): Movie[] {
     const moviesFromLocalStorage = localStorage.getItem('movies');
     if (moviesFromLocalStorage) {
@@ -131,5 +132,11 @@ export class ApiService {
         JSON.stringify({ movies: filteredMovies })
       );
     }
+  }
+
+  getMovieById(movieId: number): Movie | null {
+    const movies = this.getMovies();
+    const movie = movies.find((m: Movie) => m.id === movieId);
+    return movie || null;
   }
 }

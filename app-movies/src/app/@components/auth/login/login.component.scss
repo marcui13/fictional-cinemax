@@ -1,6 +1,12 @@
 .login-page{
     --keyboard-offset:0px !important;
     .container{
+        .logo-container{
+            width: 100%;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
         .login-form{
             height: 300px;
             display: flex;
@@ -18,7 +24,6 @@
                 width: 200px;
                 --border-color: #805117;
                 --color: #ffffff;
-                // --background:;
             }
         }
         .forgot-password{

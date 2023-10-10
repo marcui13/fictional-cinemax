@@ -1,29 +1,20 @@
 <ion-content class="login-page">
   <div class="container">
-    <!-- logo -->
-    <div style="width: 100%;display: flex;justify-content: center;align-items: center;">
-      <!-- <img src="../../../../assets/logos/logo3.jpg" alt="logo-customer"> -->
+    <div class="logo-container">
       <img [src]="logoPath" alt="logo-customer">
     </div>
   
-    <!-- login form -->
     <div class="login-form">
-      <!-- username input -->
       <ion-item class="login-form-item">
         <ion-input [(ngModel)]="username" type="text" label="Username" labelPlacement="floating" placeholder="Username"></ion-input>
       </ion-item>
-      <!-- password input -->
       <ion-item class="login-form-item">
         <ion-input [(ngModel)]="password" type="password" label="Password" labelPlacement="floating" placeholder="Password"></ion-input>
       </ion-item>
-      <!-- login button -->
       <ion-button class="login-button" (click)="onLogin()">Login</ion-button>
-      <!-- register button -->
       <ion-button  class="register-button" (click)="register()" fill="outline">Create account</ion-button>
-      <!-- <ion-text (click)="register()">Create account</ion-text> -->
     </div>
   
-    <!-- forgot password button -->
     <div class="forgot-password">
       <ion-text (click)="forgotPassword()">Forgot password?</ion-text>
     </div>

@@ -29,58 +29,32 @@ export class MovieListComponent implements OnInit {
     private loadingController: LoadingController
   ) {}
 
-  ngOnInit() {
-    this.movies = this.apiService.getMovies();
-  }
+  ngOnInit() {}
 
   ionViewWillEnter() {
-    this.menuController.close(); // Cierra el menú lateral
-
-    this.loading = true; // Activar el estado de carga
-
-    // Mostrar el spinner mientras se cargan los datos
-    this.presentLoading();
-
-    // Llama al método getMovies de ApiService para cargar las películas
+    this.menuController.close();
     this.movies = this.apiService.getMovies();
-
-    // Simula una carga de datos durante 3 segundos
-    setTimeout(() => {
-      this.loading = false; // Desactivar el estado de carga
-      if (this.loader) {
-        this.loader.dismiss(); // Ocultar el spinner si está visible
-      }
-    }, 1500);
-  }
-
-  async presentLoading() {
-    this.loader = await this.loadingController.create({
-      message: 'Loading...',
-      duration: 1500,
-    });
-    await this.loader.present();
   }
 
   toggleSearch() {
     this.showSearchBar = !this.showSearchBar;
-    this.searchText = ''; // Reiniciar el texto de búsqueda cuando se muestra la barra de búsqueda
+    this.searchText = '';
   }
 
   onSearchInput(event: any) {
-    // Filtrar películas solo si hay al menos 2 caracteres en la búsqueda
     if (this.searchText.length >= 1) {
       this.filteredMovies = this.movies.filter((movie) =>
         movie.title.toLowerCase().includes(this.searchText.toLowerCase())
       );
     } else {
-      this.filteredMovies = []; // Reiniciar la lista de películas filtradas si no se cumple la condición
+      this.filteredMovies = [];
     }
   }
 
   onSearchCancel() {
     this.showSearchBar = false;
-    this.searchText = ''; // Reiniciar el texto de búsqueda cuando se cancela la búsqueda
-    this.filteredMovies = []; // Reiniciar la lista de películas filtradas
+    this.searchText = '';
+    this.filteredMovies = [];
   }
 
   openMovieDetail(movieId: number) {
@@ -89,22 +63,18 @@ export class MovieListComponent implements OnInit {
   }
 
   editMovie(movieId: number) {
-    // Implementa la lógica de edición de la película aquí
     const movieIdString = movieId.toString();
     localStorage.setItem('movieId', movieIdString);
-    this.closeItemOption = true; // Cierra el ion-item-option
+    this.closeItemOption = true;
     this.router.navigate(['/movie-detail']);
   }
 
   navigateTo(page: string) {
-    // Realiza la navegación a la página deseada
     this.router.navigate([`/${page}`]);
   }
 
   logout() {
-    // Implementa la lógica para cerrar sesión
-    // Por ejemplo, puedes eliminar el token de autenticación y redirigir a la página de inicio de sesión
-    this.menuController.close(); // Cierra el menú lateral
+    this.menuController.close();
     this.router.navigateByUrl('/login');
   }
 

@@ -16,8 +16,8 @@ export class NotificationService {
   ) {
     this.snackBar.open(message, action, {
       duration: duration,
-      panelClass: [type], // Aplica las clases de estilo correspondientes
-      data: { type: type }, // Agrega datos para personalizar estilos
+      panelClass: [type],
+      data: { type: type },
       horizontalPosition: 'end',
       verticalPosition: verticalPosition,
     });
