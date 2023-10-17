@@ -37,10 +37,7 @@ export class ForgotPasswordComponent implements OnInit {
         this.email = '';
         this.newPassword = '';
         this.apiService.updateUser(userToUpdate);
-        this.notificationService.showSuccess(
-          'Contraseña actualizada con éxito.',
-          'bottom'
-        );
+        this.notificationService.showSuccess('Updated password!', 'bottom');
       } else {
         this.notificationService.showError('User not found', 'bottom');
       }
