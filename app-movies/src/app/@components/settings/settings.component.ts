@@ -23,10 +23,17 @@ export class SettingsComponent {
 
   constructor(private notificationService: NotificationService) {}
 
+  ionViewWillEnter() {
+    const logoPath = localStorage.getItem('logoPath');
+    if (logoPath) {
+      this.selectedLogo = logoPath;
+    }
+  }
+
   changeLogo(logo: string) {
     this.selectedLogo = logo;
     localStorage.setItem('logoPath', this.selectedLogo);
-    this.notificationService.showSuccess('Logo changed!', 'bottom');
+    // this.notificationService.showSuccess('Logo changed!', 'bottom');
   }
 
   getLogoName(logo: string) {

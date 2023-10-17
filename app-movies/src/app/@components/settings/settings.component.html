@@ -9,11 +9,19 @@
 
 <ion-content>
   <ion-list>
-    <ion-item *ngFor="let logo of logos">
-      <ion-avatar slot="start">
+    <ion-item *ngFor="let logo of logos" class="settings-item">
+      <ion-avatar slot="start" [ngClass]="{'selected-logo': selectedLogo === logo}">
         <img [src]="logo" (click)="changeLogo(logo)" />
       </ion-avatar>
       <ion-label>{{ getLogoName(logo) }}</ion-label>
     </ion-item>
   </ion-list>
+  <ion-card>
+    <ion-card-header>
+      <ion-card-title>Logo Preview</ion-card-title>
+    </ion-card-header>
+    <ion-card-content>
+      <img [src]="selectedLogo" />
+    </ion-card-content>
+  </ion-card>
 </ion-content>
