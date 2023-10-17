@@ -100,12 +100,16 @@ export class MovieDetailComponent implements OnInit {
     const modal = await this.modalController.create({
       component: MovieDetailModalComponent,
       componentProps: {
+        title: this.movie.title,
+        year: this.movie.year,
         description: this.movie.description,
       },
     });
 
     modal.onDidDismiss().then((result) => {
       if (result.role === 'save' && result.data && result.data.description) {
+        this.movie.title = result.data.title;
+        this.movie.year = result.data.year;
         this.movie.description = result.data.description;
         this.apiService.updateMovie(this.movie);
         this.notificationService.showSuccess('Description updated!', 'bottom');

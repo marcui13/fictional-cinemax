@@ -13,6 +13,8 @@ import { NotificationService } from 'src/app/@services/notification.service';
   styleUrls: ['./movie-detail-modal.component.scss'],
 })
 export class MovieDetailModalComponent implements OnInit {
+  @Input() title!: string;
+  @Input() year!: number;
   @Input() description!: string;
 
   constructor(
@@ -22,9 +24,12 @@ export class MovieDetailModalComponent implements OnInit {
 
   ngOnInit() {}
 
-  saveDescription() {
-    // Cierra el modal y pasa la nueva descripción como resultado
-    this.modalController.dismiss({ description: this.description }, 'save');
+  saveChanges() {
+    // Cierra el modal y pasa los nuevos valores como resultado
+    this.modalController.dismiss(
+      { title: this.title, year: this.year, description: this.description },
+      'save'
+    );
   }
 
   close() {
