@@ -3,7 +3,7 @@ import { Component, OnInit } from '@angular/core';
 import { FormsModule } from '@angular/forms';
 import { MatSnackBar } from '@angular/material/snack-bar';
 import { Router } from '@angular/router';
-import { IonicModule } from '@ionic/angular';
+import { AlertController, IonicModule } from '@ionic/angular';
 import { ApiService } from 'src/app/@services/api.service';
 import { NotificationService } from 'src/app/@services/notification.service';
 import { ModalController } from '@ionic/angular';
@@ -27,7 +27,8 @@ export class MovieDetailComponent implements OnInit {
     private router: Router,
     private notificationService: NotificationService,
     private apiService: ApiService,
-    private modalController: ModalController
+    private modalController: ModalController,
+    private alertController: AlertController
   ) {
     this.movie = {
       id: 0,
@@ -60,10 +61,28 @@ export class MovieDetailComponent implements OnInit {
     this.loadedData = true;
   }
 
-  deleteMovie() {
-    this.apiService.deleteMovie(this.movieId);
-    this.notificationService.showError('Movie deleted!', 'bottom');
-    this.router.navigateByUrl('/movie-list');
+  async deleteMovie() {
+    const alert = await this.alertController.create({
+      header: 'Confirm Deletion',
+      message: 'Are you sure you want to delete this movie?',
+      buttons: [
+        {
+          text: 'Cancel',
+          role: 'cancel',
+          handler: () => {},
+        },
+        {
+          text: 'Delete',
+          handler: () => {
+            this.apiService.deleteMovie(this.movieId);
+            this.notificationService.showError('Movie deleted!', 'bottom');
+            this.router.navigateByUrl('/movie-list');
+          },
+        },
+      ],
+    });
+
+    await alert.present();
   }
 
   rateMovie(rating: number) {
