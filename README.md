@@ -59,7 +59,7 @@ La Movie App 'Fictional Cinemax' es una aplicación móvil desarrollada con Ioni
 
 3. Inicia la aplicación:
    ```bash
-   ionic serve
+   npm run start
    ```
 
 ## Uso
